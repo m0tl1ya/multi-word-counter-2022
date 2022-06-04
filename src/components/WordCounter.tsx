@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 
 import { Paper } from '@mui/material';
 import { IconButton, Switch } from '@mui/material';
-import { Clear, CountertopsOutlined } from '@mui/icons-material';
+import { Clear, Countertops, CountertopsOutlined } from '@mui/icons-material';
 
 import { useRecoilValue } from "recoil";
 
@@ -14,7 +14,7 @@ import WordCountHeader from './WordCountHeader';
 import TextInput from './TextInput'
 
 
-import { useWordCounterList, wordCounterListState } from "../state/counterState";
+import { useWordCounterList, wordCounterListState, characterCountState } from "../state/counterState";
 import { WordCounterItemType } from '../state/counterState';
 import { AnyARecord } from 'dns';
 
@@ -24,7 +24,10 @@ type Props = {
 
 const WordCounter: React.FC<Props> = ({ counter }) => {
   const wordCounters = useRecoilValue(wordCounterListState);
-  const { editText, deleteCounter } = useWordCounterList();
+  
+
+
+  const { editText, toggleCountTarget, deleteCounter } = useWordCounterList();
   const id = React.useMemo(
     () => wordCounters.findIndex((listItem) => listItem === counter),
     [counter, wordCounters]
@@ -37,13 +40,20 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
     editText(id, counter, event.target.value);
   };
 
+  const toggleItem = useCallback(() => {
+    toggleCountTarget(id, counter);
+  }, [toggleCountTarget, id, counter]);
+
+  const count = useRecoilValue(characterCountState(id));
+
   return (
     <Paper elevation={4}>
       <div>
         <WordCountHeader
-        textLength={counter.text.length}
+        textLength={count}
           onActive={counter.isCounted}
           deleteItem={deleteItem}
+          toggleItem={toggleItem}
         />
       </div>
       <div>
