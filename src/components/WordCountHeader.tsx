@@ -12,6 +12,7 @@ import { useWordCounterList, wordCounterListState } from "../state/counterState"
 
 
 type Props = {
+    textLength: number;
     onActive: boolean;
     deleteItem: () => void,
 }
@@ -20,6 +21,7 @@ const WordCountHeader: React.FC<Props> = (props) => {
     return (
         <div>
             {/* {element} */}
+            {props.textLength}
             <Switch
                 checked={props.onActive}
             // onChange={() => switchCount()}

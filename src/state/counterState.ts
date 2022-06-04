@@ -17,9 +17,16 @@ function getNextId() {
     return id++;
 }
 
+function replaceItem(
+    arr: WordCounterItemType[],
+    id: number,
+    newValue: WordCounterItemType
+  ) {
+    return [...arr.slice(0, id), newValue, ...arr.slice(id + 1)];
+}
 
-function removeItem(arr: WordCounterItemType[], index: number) {
-    return [...arr.slice(0, index), ...arr.slice(index + 1)];
+function removeItem(arr: WordCounterItemType[], id: number) {
+    return [...arr.slice(0, id), ...arr.slice(id + 1)];
 }
 
 function removeAllItems(arr: WordCounterItemType[]) {
@@ -29,6 +36,18 @@ function removeAllItems(arr: WordCounterItemType[]) {
 
 export const useWordCounterList = () => {
     const [wordCounters, setWordCouters] = useRecoilState(wordCounterListState);
+
+    const editText = useCallback(
+        (id: number, item: WordCounterItemType, text: string) => {
+          const newList = replaceItem(wordCounters, id, {
+            ...item,
+            text
+          });
+          setWordCouters(newList);
+        },
+        [setWordCouters, wordCounters]
+      );
+
     const addCounterBelow = useCallback(
         () => {
             setWordCouters((oldWordCounters) => [
@@ -72,6 +91,7 @@ export const useWordCounterList = () => {
         [setWordCouters, wordCounters]
     );
     return {
+        editText,
         addCounterBelow,
         addCounterTop,
         deleteCounter,

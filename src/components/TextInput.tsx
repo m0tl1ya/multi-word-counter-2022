@@ -1,22 +1,23 @@
 import * as React from 'react';
 
-import { TextField } from '@mui/material';
+import { FabPropsVariantOverrides, TextField } from '@mui/material';
 
 type Props = {
-    // onActive: boolean;
+    text: string;
+    onChange: (event: any) => void
 }
 
-const TextInput: React.FC<Props> = () => {
+const TextInput: React.FC<Props> = (props) => {
     return (
         <TextField
             id="textarea"
             label="With placeholder multiline"
             placeholder="Paste your text"
             multiline
-            // value={this.props.text}
+            value={props.text}
             // className={classes.textField}
             margin="normal"
-            // onChange={this.handleChange}
+            onChange={props.onChange}
             autoFocus={true}
         />
     );
