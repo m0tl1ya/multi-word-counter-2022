@@ -12,6 +12,8 @@ export const wordCounterListState = atom<WordCounterItemType[]>({
     default: []
 })
 
+
+
 let id = 0;
 function getNextId() {
     return id++;
@@ -46,6 +48,17 @@ export const useWordCounterList = () => {
           setWordCouters(newList);
         },
         [setWordCouters, wordCounters]
+      );
+
+      const toggleCountTarget = useCallback(
+          (id: number, item: WordCounterItemType) => {
+            const newList = replaceItem(wordCounters, id, {
+                ...item,
+                isCounted: !item.isCounted
+              });
+              setWordCouters(newList);
+          },
+          [setWordCouters, wordCounters]
       );
 
     const addCounterBelow = useCallback(
@@ -92,6 +105,7 @@ export const useWordCounterList = () => {
     );
     return {
         editText,
+        toggleCountTarget,
         addCounterBelow,
         addCounterTop,
         deleteCounter,
