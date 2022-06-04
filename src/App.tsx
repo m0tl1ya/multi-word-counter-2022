@@ -1,14 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { RecoilRoot } from "recoil";
 
 import TitleBar from './components/TitleBar'
+import MultiWordCounter from './components/MultiWordCounter';
 
 function App() {
   return (
-    <div className="App">
-      <TitleBar />
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <TitleBar />
+        <MultiWordCounter></MultiWordCounter>
+      </div>
+    </RecoilRoot>
   );
 }
 
