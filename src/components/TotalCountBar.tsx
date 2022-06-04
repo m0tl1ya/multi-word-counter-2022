@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 
-import {useWordCounterList} from "../state/counterState";
+import { useWordCounterList } from "../state/counterState";
 import { useCallback } from 'react';
 
 const typeOfCounter = [
@@ -34,16 +34,16 @@ type Props = {
 const TotalCountBar: React.FC<Props> = () => {
 
     const { addCounterBelow, refreshCounters } = useWordCounterList();
-    
+
     const addItem = useCallback(() => {
         addCounterBelow();
     }, [addCounterBelow]);
 
-    function handleClick(){
+    function handleClick() {
         addItem();
     }
 
-    const clearAll = useCallback(() =>{
+    const clearAll = useCallback(() => {
         refreshCounters();
     }, [refreshCounters])
 
@@ -55,7 +55,7 @@ const TotalCountBar: React.FC<Props> = () => {
             <TextField
                 id="select-type"
                 select
-                
+
                 // className={classes.selectField}
                 // value={this.state.type}
                 // onChange={this.handleType}
@@ -64,7 +64,7 @@ const TotalCountBar: React.FC<Props> = () => {
                 //         className: classes.menu,
                 //     },
                 // }}
-                sx={{margin: '0.5em'}}
+                sx={{ margin: '0.5em' }}
             >
                 {typeOfCounter.map(option => (
                     <MenuItem key={option.value} value={option.value}>
@@ -75,7 +75,7 @@ const TotalCountBar: React.FC<Props> = () => {
             <Button
                 variant="contained"
                 color="secondary"
-            // className={classes.addButton}
+                // className={classes.addButton}
                 onClick={() => handleClick()}
             >
                 Add
@@ -92,8 +92,8 @@ const TotalCountBar: React.FC<Props> = () => {
             <Button
                 variant="contained"
                 color="primary"
-            // className={classes.refreshButton}
-            onClick={clearAll}
+                // className={classes.refreshButton}
+                onClick={clearAll}
             >
                 Refresh
             </Button>
