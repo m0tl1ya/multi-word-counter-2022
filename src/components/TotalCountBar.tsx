@@ -33,7 +33,7 @@ type Props = {
 
 const TotalCountBar: React.FC<Props> = () => {
 
-    const { addCounterBelow } = useWordCounterList();
+    const { addCounterBelow, refreshCounters } = useWordCounterList();
     
     const addItem = useCallback(() => {
         addCounterBelow();
@@ -42,6 +42,10 @@ const TotalCountBar: React.FC<Props> = () => {
     function handleClick(){
         addItem();
     }
+
+    const clearAll = useCallback(() =>{
+        refreshCounters();
+    }, [refreshCounters])
 
     return (
         <div>
@@ -89,7 +93,7 @@ const TotalCountBar: React.FC<Props> = () => {
                 variant="contained"
                 color="primary"
             // className={classes.refreshButton}
-            // onClick={() => refresh()}
+            onClick={clearAll}
             >
                 Refresh
             </Button>
