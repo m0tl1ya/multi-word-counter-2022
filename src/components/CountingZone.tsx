@@ -8,7 +8,13 @@ import { Clear, Refresh } from '@mui/icons-material';
 
 import Fab from '@mui/material/Fab';
 
+
+import { useCallback } from 'react';
+import { useRecoilValue } from "recoil";
+
 import WordCounter from './WordCounter'
+import {useWordCounterList, wordCounterListState} from "../state/counterState";
+
 
 
 type Props = {
@@ -16,8 +22,18 @@ type Props = {
 }
 
 const CountingZone: React.FC<Props> = () => {
+    const wordCounters = useRecoilValue(wordCounterListState);
+
     return (
-        <div></div>
+        <div>
+        {wordCounters.map(counter =>
+          <WordCounter
+            key={counter.id}
+            counter={counter}
+            // actions={actions}
+            // mode={mode}
+          />)}
+      </div>
     );
 }
 

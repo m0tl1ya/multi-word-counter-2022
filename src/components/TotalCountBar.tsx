@@ -7,6 +7,9 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 
+import {useWordCounterList} from "../state/counterState";
+import { useCallback } from 'react';
+
 const typeOfCounter = [
     {
         value: 'Words',
@@ -29,8 +32,68 @@ type Props = {
 
 
 const TotalCountBar: React.FC<Props> = () => {
+
+    const { addItemTop } = useWordCounterList();
+    
+    const addItem = useCallback(() => {
+        addItemTop();
+    }, [addItemTop]);
+
+    function handleClick(){
+        addItem();
+    }
+
     return (
-        <div></div>
+        <div>
+            {/* <Typography variant="title" color="inherit">
+                {element}
+            </Typography> */}
+            <TextField
+                id="select-type"
+                select
+                
+                // className={classes.selectField}
+                // value={this.state.type}
+                // onChange={this.handleType}
+                // SelectProps={{
+                //     MenuProps: {
+                //         className: classes.menu,
+                //     },
+                // }}
+                sx={{margin: '0.5em'}}
+            >
+                {typeOfCounter.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                    </MenuItem>
+                ))}
+            </TextField>
+            <Button
+                variant="contained"
+                color="secondary"
+            // className={classes.addButton}
+                onClick={() => handleClick()}
+            >
+                Add
+            </Button>
+            <FormControlLabel
+                control={
+                    <Checkbox
+                        checked={true}
+                    // onChange={this.handleChange}
+                    />
+                }
+                label="Add below"
+            />
+            <Button
+                variant="contained"
+                color="primary"
+            // className={classes.refreshButton}
+            // onClick={() => refresh()}
+            >
+                Refresh
+            </Button>
+        </div>
     );
 }
 
