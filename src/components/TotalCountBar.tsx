@@ -33,11 +33,11 @@ type Props = {
 
 const TotalCountBar: React.FC<Props> = () => {
 
-    const { addItemTop } = useWordCounterList();
+    const { addCounterBelow } = useWordCounterList();
     
     const addItem = useCallback(() => {
-        addItemTop();
-    }, [addItemTop]);
+        addCounterBelow();
+    }, [addCounterBelow]);
 
     function handleClick(){
         addItem();

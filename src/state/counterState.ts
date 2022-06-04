@@ -25,7 +25,7 @@ function removeItem(arr: WordCounterItemType[], index: number) {
 
 export const useWordCounterList = () => {
     const [wordCounters, setWordCouters] = useRecoilState(wordCounterListState);
-    const addItemBelow = useCallback(
+    const addCounterBelow = useCallback(
         () => {
             setWordCouters((oldWordCounters) => [
                 ...oldWordCounters,
@@ -39,7 +39,7 @@ export const useWordCounterList = () => {
         [setWordCouters]
     );
 
-    const addItemTop = useCallback(
+    const addCounterTop = useCallback(
         () => {
             setWordCouters((oldWordCounters) => [
                 {
@@ -52,7 +52,7 @@ export const useWordCounterList = () => {
         },
         [setWordCouters]
     );
-    const deleteItem = useCallback(
+    const deleteCounter = useCallback(
         (id: number) => {
             const newItemList = removeItem(wordCounters, id);
             setWordCouters(newItemList);
@@ -60,9 +60,9 @@ export const useWordCounterList = () => {
         [setWordCouters, wordCounters]
     );
     return {
-        addItemBelow,
-        addItemTop,
-        deleteItem,
+        addCounterBelow,
+        addCounterTop,
+        deleteCounter,
     }
 
 
