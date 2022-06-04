@@ -26,7 +26,7 @@ const WordCountHeader: React.FC<Props> = (props) => {
             />
             <IconButton
                 aria-label="Delete"
-            onClick={props.deleteItem}
+                onClick={props.deleteItem}
             >
                 <Clear />
             </IconButton>

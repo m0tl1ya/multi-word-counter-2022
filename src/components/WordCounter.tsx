@@ -18,7 +18,7 @@ import { useWordCounterList, wordCounterListState } from "../state/counterState"
 import { WordCounterItemType } from '../state/counterState';
 
 type Props = {
-    counter: WordCounterItemType;
+  counter: WordCounterItemType;
 }
 
 const WordCounter: React.FC<Props> = ({ counter }) => {
@@ -30,22 +30,22 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
   );
   const deleteItem = useCallback(() => {
     deleteCounter(id);
-}, [deleteCounter, id]);
-  
-    return (
-        <Paper elevation={4}>
-        <div>
-          <WordCountHeader
-            onActive={counter.isCounted}
-            deleteItem={deleteItem}
-          />
-        </div>
-        <div>
-          <TextInput
-          />
-        </div>
-      </Paper>
-    );
+  }, [deleteCounter, id]);
+
+  return (
+    <Paper elevation={4}>
+      <div>
+        <WordCountHeader
+          onActive={counter.isCounted}
+          deleteItem={deleteItem}
+        />
+      </div>
+      <div>
+        <TextInput
+        />
+      </div>
+    </Paper>
+  );
 }
 
 export default WordCounter;
