@@ -1,9 +1,12 @@
 import { useCallback } from "react";
-import { atom, useRecoilState, useSetRecoilState } from "recoil";
+import { atom, useRecoilState, useSetRecoilState, selector, selectorFamily } from "recoil";
 
 export type WordCounterItemType = {
     id: number;
     text: string;
+    numWords: number;
+    numCharacters: number;
+    numCharactersWithoutSpaces: number;
     isCounted: boolean;
 }
 
@@ -68,6 +71,9 @@ export const useWordCounterList = () => {
                 {
                     id: getNextId(),
                     text: "",
+                    numWords: 0,
+                    numCharacters: 0,
+                    numCharactersWithoutSpaces: 0,
                     isCounted: true
                 }
             ]);
@@ -81,6 +87,9 @@ export const useWordCounterList = () => {
                 {
                     id: getNextId(),
                     text: "",
+                    numWords: 0,
+                    numCharacters: 0,
+                    numCharactersWithoutSpaces: 0,
                     isCounted: true
                 },
                 ...oldWordCounters
@@ -115,5 +124,18 @@ export const useWordCounterList = () => {
 
 }
 
-export { }
+
+export const characterCountState = selectorFamily({
+    key: 'characotCountState',
+    get: id => ({ get }) => {
+        const counter = get(wordCounterListState).find(counter =>
+            counter.id === id);
+        if (!counter) {
+            return 0;
+        } else{
+            return counter.text.length
+        }
+        
+    }
+});
 
