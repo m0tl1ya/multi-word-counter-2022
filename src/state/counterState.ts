@@ -43,9 +43,15 @@ export const useWordCounterList = () => {
     const [wordCounters, setWordCouters] = useRecoilState(wordCounterListState);
 
     const editText = (id: number, item: WordCounterItemType, text: string) => {
+        const numWord = text.length;
+        const numCharactersWithoutSpaces = text.length;
+        const numCharacters = text.length;
         const newList = replaceItem(wordCounters, id, {
             ...item,
             text: text,
+            numWords: numWord,
+            numCharacters: numCharactersWithoutSpaces,
+            numCharactersWithoutSpaces: numCharacters,
         });
         setWordCouters(newList);
     };
