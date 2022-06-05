@@ -9,7 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 import { useRecoilValue } from "recoil";
 
-import {useWordCounterList} from "../state/counterState";
+import { useWordCounterList } from "../state/counterState";
 import { useState, useCallback } from 'react';
 import { totalStatsState } from '../state/counterStatsState';
 
@@ -43,15 +43,11 @@ const TotalCountBar: React.FC<Props> = () => {
     const addItem = () => {
         if (addBelow) {
             addCounterBelow();
-        } else{
+        } else {
             addCounterTop();
         }
-        
-    };
 
-    function handleClick() {
-        addItem();
-    }
+    };
 
     const clearAll = useCallback(() => {
         refreshCounters();
@@ -98,7 +94,7 @@ const TotalCountBar: React.FC<Props> = () => {
                 control={
                     <Checkbox
                         checked={addBelow}
-                    onChange={handleCheckBox}
+                        onChange={handleCheckBox}
                     />
                 }
                 label="Add below"
