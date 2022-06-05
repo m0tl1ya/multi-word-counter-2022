@@ -42,27 +42,22 @@ function removeAllItems(arr: WordCounterItemType[]) {
 export const useWordCounterList = () => {
     const [wordCounters, setWordCouters] = useRecoilState(wordCounterListState);
 
-    const editText = useCallback(
-        (id: number, item: WordCounterItemType, text: string) => {
+    const editText = (id: number, item: WordCounterItemType, text: string) => {
           const newList = replaceItem(wordCounters, id, {
             ...item,
-            text
+            text: text,
           });
           setWordCouters(newList);
-        },
-        [setWordCouters, wordCounters]
-      );
+        };
 
-      const toggleCountTarget = useCallback(
-          (id: number, item: WordCounterItemType) => {
+
+      const toggleCountTarget = (id: number, item: WordCounterItemType) => {
             const newList = replaceItem(wordCounters, id, {
                 ...item,
                 isCounted: !item.isCounted
               });
               setWordCouters(newList);
-          },
-          [setWordCouters, wordCounters]
-      );
+          };
 
     const addCounterBelow = useCallback(
         () => {
@@ -81,8 +76,7 @@ export const useWordCounterList = () => {
         [setWordCouters]
     );
 
-    const addCounterTop = useCallback(
-        () => {
+    const addCounterTop = () => {
             setWordCouters((oldWordCounters) => [
                 {
                     id: getNextId(),
@@ -94,24 +88,17 @@ export const useWordCounterList = () => {
                 },
                 ...oldWordCounters
             ]);
-        },
-        [setWordCouters]
-    );
-    const deleteCounter = useCallback(
-        (id: number) => {
+        };
+    const deleteCounter = (id: number) => {
             const newItemList = removeItem(wordCounters, id);
             setWordCouters(newItemList);
-        },
-        [setWordCouters, wordCounters]
-    );
+        };
 
-    const refreshCounters = useCallback(
-        () => {
+    const refreshCounters =  () => {
             const newItemList = removeAllItems(wordCounters);
             setWordCouters(newItemList);
-        },
-        [setWordCouters, wordCounters]
-    );
+        };
+        
     return {
         editText,
         toggleCountTarget,
