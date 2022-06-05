@@ -12,12 +12,17 @@ export type WordCounterItemType = {
 
 export const wordCounterListState = atom<WordCounterItemType[]>({
     key: "wordCounterListState",
-    default: []
+    default: [{
+        id: 0,
+        text: "",
+        numWords: 0,
+        numCharacters: 0,
+        numCharactersWithoutSpaces: 0,
+        isCounted: true
+    },]
 })
 
-
-
-let id = 0;
+let id = 1;
 function getNextId() {
     return id++;
 }
@@ -38,7 +43,7 @@ function removeAllItems(arr: WordCounterItemType[]) {
     return []
 }
 
-function countWord(text: string){
+function countWord(text: string) {
     const regexResult = text.match(/\S+/g);
     if (regexResult) {
         return regexResult.length;
@@ -47,7 +52,7 @@ function countWord(text: string){
     }
 }
 
-function countCharacterWithoutSpace(text: string){
+function countCharacterWithoutSpace(text: string) {
     const regexResult = text.match(/\S/g);
     if (regexResult) {
         return regexResult.length;
