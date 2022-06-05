@@ -118,17 +118,3 @@ export const useWordCounterList = () => {
 }
 
 
-export const characterCountState = selectorFamily({
-    key: 'characotCountState',
-    get: id => ({ get }) => {
-        const counter = get(wordCounterListState).find(counter =>
-            counter.id === id);
-        if (!counter) {
-            return 0;
-        } else {
-            return counter.text.length
-        }
-
-    }
-});
-

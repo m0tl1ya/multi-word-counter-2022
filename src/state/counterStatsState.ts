@@ -8,19 +8,6 @@ export type CounterStatsType = {
     totalNumOfCharactersWithoutSpace: number;
 }
 
-export const wordCounterStatsState = selectorFamily({
-    key: 'wordCounterStatsState',
-    get: id => ({ get }) => {
-        const counter = get(wordCounterListState).find(counter =>
-            counter.id === id);
-        if (!counter) {
-            return 0;
-        } else {
-            return counter.text.length
-        }
-
-    }
-});
 
 export const totalStatsState = selector<CounterStatsType>({
     key: "totalStatsState",

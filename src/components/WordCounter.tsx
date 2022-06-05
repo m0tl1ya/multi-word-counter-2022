@@ -14,7 +14,7 @@ import WordCountHeader from './WordCountHeader';
 import TextInput from './TextInput'
 
 
-import { useWordCounterList, wordCounterListState, characterCountState } from "../state/counterState";
+import { useWordCounterList, wordCounterListState } from "../state/counterState";
 import { WordCounterItemType } from '../state/counterState';
 import { AnyARecord } from 'dns';
 
@@ -44,13 +44,11 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
     toggleCountTarget(id, counter);
   }, [toggleCountTarget, id, counter]);
 
-  const count = useRecoilValue(characterCountState(id));
-
   return (
     <Paper elevation={4}>
       <div>
         <WordCountHeader
-        textLength={count}
+          textLength={counter.numCharacters}
           onActive={counter.isCounted}
           deleteItem={deleteItem}
           toggleItem={toggleItem}
