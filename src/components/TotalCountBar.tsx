@@ -10,7 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { useRecoilValue } from "recoil";
 
 import {useWordCounterList} from "../state/counterState";
-import { useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { totalStatsState } from '../state/counterStatsState';
 
 const typeOfCounter = [
@@ -36,12 +36,18 @@ type Props = {
 
 const TotalCountBar: React.FC<Props> = () => {
     const totalCountStats = useRecoilValue(totalStatsState);
+    const [addBelow, setAddBelow] = useState(true);
 
-    const { addCounterBelow, refreshCounters } = useWordCounterList();
+    const { addCounterBelow, addCounterTop, refreshCounters } = useWordCounterList();
 
-    const addItem = useCallback(() => {
-        addCounterBelow();
-    }, [addCounterBelow]);
+    const addItem = () => {
+        if (addBelow) {
+            addCounterBelow();
+        } else{
+            addCounterTop();
+        }
+        
+    };
 
     function handleClick() {
         addItem();
@@ -50,6 +56,10 @@ const TotalCountBar: React.FC<Props> = () => {
     const clearAll = useCallback(() => {
         refreshCounters();
     }, [refreshCounters])
+
+    const handleCheckBox = () => {
+        setAddBelow(!addBelow);
+    }
 
     return (
         <div>
@@ -80,15 +90,15 @@ const TotalCountBar: React.FC<Props> = () => {
                 variant="contained"
                 color="secondary"
                 // className={classes.addButton}
-                onClick={() => handleClick()}
+                onClick={addItem}
             >
                 Add
             </Button>
             <FormControlLabel
                 control={
                     <Checkbox
-                        checked={true}
-                    // onChange={this.handleChange}
+                        checked={addBelow}
+                    onChange={handleCheckBox}
                     />
                 }
                 label="Add below"
