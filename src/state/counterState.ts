@@ -26,7 +26,7 @@ function replaceItem(
     arr: WordCounterItemType[],
     id: number,
     newValue: WordCounterItemType
-  ) {
+) {
     return [...arr.slice(0, id), newValue, ...arr.slice(id + 1)];
 }
 
@@ -43,21 +43,21 @@ export const useWordCounterList = () => {
     const [wordCounters, setWordCouters] = useRecoilState(wordCounterListState);
 
     const editText = (id: number, item: WordCounterItemType, text: string) => {
-          const newList = replaceItem(wordCounters, id, {
+        const newList = replaceItem(wordCounters, id, {
             ...item,
             text: text,
-          });
-          setWordCouters(newList);
-        };
+        });
+        setWordCouters(newList);
+    };
 
 
-      const toggleCountTarget = (id: number, item: WordCounterItemType) => {
-            const newList = replaceItem(wordCounters, id, {
-                ...item,
-                isCounted: !item.isCounted
-              });
-              setWordCouters(newList);
-          };
+    const toggleCountTarget = (id: number, item: WordCounterItemType) => {
+        const newList = replaceItem(wordCounters, id, {
+            ...item,
+            isCounted: !item.isCounted
+        });
+        setWordCouters(newList);
+    };
 
     const addCounterBelow = useCallback(
         () => {
@@ -77,28 +77,28 @@ export const useWordCounterList = () => {
     );
 
     const addCounterTop = () => {
-            setWordCouters((oldWordCounters) => [
-                {
-                    id: getNextId(),
-                    text: "",
-                    numWords: 0,
-                    numCharacters: 0,
-                    numCharactersWithoutSpaces: 0,
-                    isCounted: true
-                },
-                ...oldWordCounters
-            ]);
-        };
+        setWordCouters((oldWordCounters) => [
+            {
+                id: getNextId(),
+                text: "",
+                numWords: 0,
+                numCharacters: 0,
+                numCharactersWithoutSpaces: 0,
+                isCounted: true
+            },
+            ...oldWordCounters
+        ]);
+    };
     const deleteCounter = (id: number) => {
-            const newItemList = removeItem(wordCounters, id);
-            setWordCouters(newItemList);
-        };
+        const newItemList = removeItem(wordCounters, id);
+        setWordCouters(newItemList);
+    };
 
-    const refreshCounters =  () => {
-            const newItemList = removeAllItems(wordCounters);
-            setWordCouters(newItemList);
-        };
-        
+    const refreshCounters = () => {
+        const newItemList = removeAllItems(wordCounters);
+        setWordCouters(newItemList);
+    };
+
     return {
         editText,
         toggleCountTarget,
@@ -119,10 +119,10 @@ export const characterCountState = selectorFamily({
             counter.id === id);
         if (!counter) {
             return 0;
-        } else{
+        } else {
             return counter.text.length
         }
-        
+
     }
 });
 
