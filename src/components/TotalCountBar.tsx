@@ -12,19 +12,20 @@ import { useRecoilValue } from "recoil";
 import { useWordCounterList } from "../state/counterState";
 import { useState, useCallback } from 'react';
 import { totalStatsState } from '../state/counterStatsState';
+import { modeValue, useCountMode } from '../state/modeState';
 
 const typeOfCounter = [
     {
-        value: 'Words',
+        value: modeValue.WORDS,
         label: 'Words',
     },
     {
-        value: 'Characters',
+        value: modeValue.CHARACTER,
         label: 'Characters',
     },
     {
-        value: 'Characters including space',
-        label: 'Characters including space',
+        value: modeValue.CHARACTER_WITHOUT_SPACES,
+        label: 'Characters without spaces',
     },
 ];
 
@@ -36,7 +37,26 @@ type Props = {
 
 const TotalCountBar: React.FC<Props> = () => {
     const totalCountStats = useRecoilValue(totalStatsState);
+
     const [addBelow, setAddBelow] = useState(true);
+    const { countMode, switchCountMode } = useCountMode();
+
+    const handleSelect = (event: any) => {
+        switch (event.target.value) {
+            case "Words":
+                switchCountMode(modeValue.WORDS);
+                break;
+            case "Characters":
+                switchCountMode(modeValue.CHARACTER);
+                break;
+            case "Characters without spaces":
+                switchCountMode(modeValue.CHARACTER_WITHOUT_SPACES);
+                break;
+            default:
+                break;
+        } 
+        
+    }
 
     const { addCounterBelow, addCounterTop, refreshCounters } = useWordCounterList();
 
@@ -56,19 +76,32 @@ const TotalCountBar: React.FC<Props> = () => {
     const handleCheckBox = () => {
         setAddBelow(!addBelow);
     }
+    
 
     return (
         <div>
+
             <Typography variant="h2" color="inherit">
-                {totalCountStats.totalNumOfWords}
+                {(() => {
+                    switch (countMode) {
+                        case modeValue.WORDS:
+                            return <span>{totalCountStats.totalNumOfWords} words</span>
+                        case modeValue.CHARACTER:
+                        return<span>{totalCountStats.totalNumOfCharacters} characters</span>
+                        case  modeValue.CHARACTER_WITHOUT_SPACES:
+                        return <span>{totalCountStats.totalNumOfCharactersWithoutSpace} characters</span>
+                        default:
+                            return <span>none</span>
+                    }
+                }) ()}
             </Typography>
             <TextField
                 id="select-type"
                 select
 
                 // className={classes.selectField}
-                // value={this.state.type}
-                // onChange={this.handleType}
+                value={countMode}
+                onChange={handleSelect}
                 // SelectProps={{
                 //     MenuProps: {
                 //         className: classes.menu,
