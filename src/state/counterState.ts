@@ -61,7 +61,6 @@ export const useWordCounterList = () => {
     const [wordCounters, setWordCouters] = useRecoilState(wordCounterListState);
 
     const editText = (id: number, item: WordCounterItemType, text: string) => {
-        // const numWord = (text: string) => {const result = text.match(/\S+/g); if(result){return result} else {return 0} };
         const numWord = countWord(text);
         const numCharactersWithoutSpaces = countCharacterWithoutSpace(text);
         const numCharacters = text.length;
