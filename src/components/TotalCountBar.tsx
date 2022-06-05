@@ -7,8 +7,11 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 
-import { useWordCounterList } from "../state/counterState";
+import { useRecoilValue } from "recoil";
+
+import {useWordCounterList} from "../state/counterState";
 import { useCallback } from 'react';
+import { totalStatsState } from '../state/counterStatsState';
 
 const typeOfCounter = [
     {
@@ -32,6 +35,7 @@ type Props = {
 
 
 const TotalCountBar: React.FC<Props> = () => {
+    const totalCountStats = useRecoilValue(totalStatsState);
 
     const { addCounterBelow, refreshCounters } = useWordCounterList();
 
@@ -49,9 +53,9 @@ const TotalCountBar: React.FC<Props> = () => {
 
     return (
         <div>
-            {/* <Typography variant="title" color="inherit">
-                {element}
-            </Typography> */}
+            <Typography variant="h2" color="inherit">
+                {totalCountStats.totalNumOfWords}
+            </Typography>
             <TextField
                 id="select-type"
                 select
