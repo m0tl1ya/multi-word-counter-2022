@@ -73,8 +73,8 @@ export const useWordCounterList = () => {
             ...item,
             text: text,
             numWords: numWord,
-            numCharacters: numCharactersWithoutSpaces,
-            numCharactersWithoutSpaces: numCharacters,
+            numCharacters: numCharacters,
+            numCharactersWithoutSpaces: numCharactersWithoutSpaces,
         });
         setWordCouters(newList);
     };
