@@ -15,6 +15,7 @@ type Props = {
     textLength: number;
     onActive: boolean;
     deleteItem: () => void,
+    toggleItem: () => void,
 }
 
 const WordCountHeader: React.FC<Props> = (props) => {
@@ -24,7 +25,7 @@ const WordCountHeader: React.FC<Props> = (props) => {
             {props.textLength}
             <Switch
                 checked={props.onActive}
-            // onChange={() => switchCount()}
+                onChange={props.toggleItem}
             />
             <IconButton
                 aria-label="Delete"
