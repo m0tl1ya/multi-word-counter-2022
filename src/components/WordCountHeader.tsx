@@ -1,15 +1,9 @@
 import * as React from 'react';
-
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-
 import { IconButton, Switch } from '@mui/material';
 import { Clear } from '@mui/icons-material';
 
-import { useRecoilValue } from "recoil";
 
-import { useWordCounterList, WordCounterItemType, wordCounterListState } from "../state/counterState";
-import { CounterStatsType } from '../state/counterStatsState';
+import { WordCounterItemType } from "../state/counterState";
 import { modeValue, useCountMode } from '../state/modeState';
 
 type Props = {

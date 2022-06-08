@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { atom, useRecoilState, useSetRecoilState, selector, selectorFamily } from "recoil";
+import { atom, useRecoilState } from "recoil";
 
 export type WordCounterItemType = {
     id: number;

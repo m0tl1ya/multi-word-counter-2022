@@ -1,13 +1,3 @@
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-// import IconButton from '@mui/material/IconButton';
-// import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import Checkbox from '@mui/material/Checkbox';
-
-
 import CountingZone from './CountingZone';
 import TotalCountBar from './TotalCountBar'
 

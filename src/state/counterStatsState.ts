@@ -1,4 +1,4 @@
-import { selector, selectorFamily } from "recoil";
+import { selector } from "recoil";
 import { wordCounterListState } from "./counterState";
 
 
