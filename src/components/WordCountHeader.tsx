@@ -8,23 +8,35 @@ import { Clear } from '@mui/icons-material';
 
 import { useRecoilValue } from "recoil";
 
-import { useWordCounterList, wordCounterListState } from "../state/counterState";
-
+import { useWordCounterList, WordCounterItemType, wordCounterListState } from "../state/counterState";
+import { CounterStatsType } from '../state/counterStatsState';
+import { modeValue, useCountMode } from '../state/modeState';
 
 type Props = {
-    textLength: number;
-    onActive: boolean;
+    counter: WordCounterItemType;
     deleteItem: () => void,
     toggleItem: () => void,
 }
 
 const WordCountHeader: React.FC<Props> = (props) => {
+    const { countMode } = useCountMode();
+
     return (
         <div>
-            {/* {element} */}
-            {props.textLength}
+            {(() => {
+                    switch (countMode) {
+                        case modeValue.WORDS:
+                            return <span>{props.counter.numWords} words</span>
+                        case modeValue.CHARACTER:
+                        return<span>{props.counter.numCharacters} characters</span>
+                        case  modeValue.CHARACTER_WITHOUT_SPACES:
+                        return <span>{props.counter.numCharactersWithoutSpaces} characters</span>
+                        default:
+                            return <span>none</span>
+                    }
+                }) ()}
             <Switch
-                checked={props.onActive}
+                checked={props.counter.isCounted}
                 onChange={props.toggleItem}
             />
             <IconButton

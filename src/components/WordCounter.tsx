@@ -17,6 +17,9 @@ import TextInput from './TextInput'
 import { useWordCounterList, wordCounterListState } from "../state/counterState";
 import { WordCounterItemType } from '../state/counterState';
 import { AnyARecord } from 'dns';
+import { countModeState } from '../state/modeState';
+import { modeValue, useCountMode } from '../state/modeState';
+
 
 type Props = {
   counter: WordCounterItemType;
@@ -24,9 +27,6 @@ type Props = {
 
 const WordCounter: React.FC<Props> = ({ counter }) => {
   const wordCounters = useRecoilValue(wordCounterListState);
-  
-
-
   const { editText, toggleCountTarget, deleteCounter } = useWordCounterList();
   const id = React.useMemo(
     () => wordCounters.findIndex((listItem) => listItem === counter),
@@ -44,12 +44,16 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
     toggleCountTarget(id, counter);
   }, [toggleCountTarget, id, counter]);
 
+  // const countMode = useRecoilValue(countModeState);
+  const { countMode, switchCountMode } = useCountMode();
+
   return (
     <Paper elevation={4}>
       <div>
         <WordCountHeader
-          textLength={counter.numCharacters}
-          onActive={counter.isCounted}
+          // textLength={counter.numCharacters}
+          // onActive={counter.isCounted}
+          counter={counter}
           deleteItem={deleteItem}
           toggleItem={toggleItem}
         />
