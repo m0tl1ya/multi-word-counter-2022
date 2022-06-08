@@ -24,17 +24,17 @@ const WordCountHeader: React.FC<Props> = (props) => {
     return (
         <div>
             {(() => {
-                    switch (countMode) {
-                        case modeValue.WORDS:
-                            return <span>{props.counter.numWords} words</span>
-                        case modeValue.CHARACTER:
-                        return<span>{props.counter.numCharacters} characters</span>
-                        case  modeValue.CHARACTER_WITHOUT_SPACES:
+                switch (countMode) {
+                    case modeValue.WORDS:
+                        return <span>{props.counter.numWords} words</span>
+                    case modeValue.CHARACTER:
+                        return <span>{props.counter.numCharacters} characters</span>
+                    case modeValue.CHARACTER_WITHOUT_SPACES:
                         return <span>{props.counter.numCharactersWithoutSpaces} characters</span>
-                        default:
-                            return <span>none</span>
-                    }
-                }) ()}
+                    default:
+                        return <span>none</span>
+                }
+            })()}
             <Switch
                 checked={props.counter.isCounted}
                 onChange={props.toggleItem}

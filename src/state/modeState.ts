@@ -19,6 +19,6 @@ export const useCountMode = () => {
     const switchCountMode = (value: CountModeType) => {
         setCountMode(value);
     }
-    return {countMode, switchCountMode};
+    return { countMode, switchCountMode };
 };
 

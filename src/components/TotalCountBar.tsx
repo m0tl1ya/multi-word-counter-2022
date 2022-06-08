@@ -54,8 +54,8 @@ const TotalCountBar: React.FC<Props> = () => {
                 break;
             default:
                 break;
-        } 
-        
+        }
+
     }
 
     const { addCounterBelow, addCounterTop, refreshCounters } = useWordCounterList();
@@ -76,7 +76,7 @@ const TotalCountBar: React.FC<Props> = () => {
     const handleCheckBox = () => {
         setAddBelow(!addBelow);
     }
-    
+
 
     return (
         <div>
@@ -87,13 +87,13 @@ const TotalCountBar: React.FC<Props> = () => {
                         case modeValue.WORDS:
                             return <span>{totalCountStats.totalNumOfWords} words</span>
                         case modeValue.CHARACTER:
-                        return<span>{totalCountStats.totalNumOfCharacters} characters</span>
-                        case  modeValue.CHARACTER_WITHOUT_SPACES:
-                        return <span>{totalCountStats.totalNumOfCharactersWithoutSpace} characters</span>
+                            return <span>{totalCountStats.totalNumOfCharacters} characters</span>
+                        case modeValue.CHARACTER_WITHOUT_SPACES:
+                            return <span>{totalCountStats.totalNumOfCharactersWithoutSpace} characters</span>
                         default:
                             return <span>none</span>
                     }
-                }) ()}
+                })()}
             </Typography>
             <TextField
                 id="select-type"

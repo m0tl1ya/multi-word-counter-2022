@@ -13,28 +13,28 @@ import { useCallback } from 'react';
 import { useRecoilValue } from "recoil";
 
 import WordCounter from './WordCounter'
-import {useWordCounterList, wordCounterListState} from "../state/counterState";
+import { useWordCounterList, wordCounterListState } from "../state/counterState";
 
 
 
 type Props = {
-    // onActive: boolean;
+  // onActive: boolean;
 }
 
 const CountingZone: React.FC<Props> = () => {
-    const wordCounters = useRecoilValue(wordCounterListState);
+  const wordCounters = useRecoilValue(wordCounterListState);
 
-    return (
-        <div>
-        {wordCounters.map(counter =>
-          <WordCounter
-            key={counter.id}
-            counter={counter}
-            // actions={actions}
-            // mode={mode}
-          />)}
-      </div>
-    );
+  return (
+    <div>
+      {wordCounters.map(counter =>
+        <WordCounter
+          key={counter.id}
+          counter={counter}
+        // actions={actions}
+        // mode={mode}
+        />)}
+    </div>
+  );
 }
 
 export default CountingZone;
