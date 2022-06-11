@@ -1,12 +1,8 @@
 import CountingZone from './CountingZone';
 import TotalCountBar from './TotalCountBar'
 
-type Props = {
-    // onActive: boolean;
-}
 
-
-const MultiWordCounter: React.FC<Props> = () => {
+const MultiWordCounter: React.FC= () => {
     return (
         <div>
             <TotalCountBar />
