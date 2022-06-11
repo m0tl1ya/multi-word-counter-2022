@@ -28,12 +28,7 @@ const typeOfCounter = [
 ];
 
 
-type Props = {
-    // onActive: boolean;
-}
-
-
-const TotalCountBar: React.FC<Props> = () => {
+const TotalCountBar: React.FC = () => {
     const totalCountStats = useRecoilValue(totalStatsState);
 
     const [addBelow, setAddBelow] = useState(true);
