@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useCallback } from 'react';
 import { Paper } from '@mui/material';
 import { useRecoilValue } from "recoil";
 import WordCountHeader from './WordCountHeader';
@@ -31,17 +30,18 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
     () => wordCounters.findIndex((listItem) => listItem === counter),
     [counter, wordCounters]
   );
-  const deleteItem = useCallback(() => {
+
+  const deleteItem = () => {
     deleteCounter(id);
-  }, [deleteCounter, id]);
+  };
 
   const onChange = (event: any) => {
     editText(id, counter, event.target.value);
   };
 
-  const toggleItem = useCallback(() => {
+  const toggleItem = () => {
     toggleCountTarget(id, counter);
-  }, [toggleCountTarget, id, counter]);
+  };
 
 
   return (

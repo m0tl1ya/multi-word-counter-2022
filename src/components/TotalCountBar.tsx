@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 import { useRecoilValue } from "recoil";
 
 import { useWordCounterList } from "../state/counterState";
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { totalStatsState } from '../state/counterStatsState';
 import { modeValue, useCountMode } from '../state/modeState';
 
@@ -82,9 +82,9 @@ const TotalCountBar: React.FC = () => {
 
     };
 
-    const clearAll = useCallback(() => {
+    const clearAll = ()=> {
         refreshCounters();
-    }, [refreshCounters])
+    };
 
     const handleCheckBox = () => {
         setAddBelow(!addBelow);

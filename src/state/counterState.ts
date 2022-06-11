@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { atom, useRecoilState } from "recoil";
 
 export type WordCounterItemType = {
@@ -88,22 +87,19 @@ export const useWordCounterList = () => {
         setWordCouters(newList);
     };
 
-    const addCounterBelow = useCallback(
-        () => {
-            setWordCouters((oldWordCounters) => [
-                ...oldWordCounters,
-                {
-                    id: getNextId(),
-                    text: "",
-                    numWords: 0,
-                    numCharacters: 0,
-                    numCharactersWithoutSpaces: 0,
-                    isCounted: true
-                }
-            ]);
-        },
-        [setWordCouters]
-    );
+    const addCounterBelow = () => {
+        setWordCouters((oldWordCounters) => [
+            ...oldWordCounters,
+            {
+                id: getNextId(),
+                text: "",
+                numWords: 0,
+                numCharacters: 0,
+                numCharactersWithoutSpaces: 0,
+                isCounted: true
+            }
+        ]);
+    };
 
     const addCounterTop = () => {
         setWordCouters((oldWordCounters) => [
