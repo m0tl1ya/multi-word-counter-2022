@@ -48,8 +48,6 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
     <Paper elevation={4} sx={styleCounter}>
       <div>
         <WordCountHeader
-          // textLength={counter.numCharacters}
-          // onActive={counter.isCounted}
           counter={counter}
           deleteItem={deleteItem}
           toggleItem={toggleItem}
