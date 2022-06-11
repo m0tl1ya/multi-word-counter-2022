@@ -4,6 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
+import { Box } from '@mui/material';
 
 import { useRecoilValue } from "recoil";
 
@@ -11,6 +12,25 @@ import { useWordCounterList } from "../state/counterState";
 import { useState, useCallback } from 'react';
 import { totalStatsState } from '../state/counterStatsState';
 import { modeValue, useCountMode } from '../state/modeState';
+
+const styleAddButton = {
+    color: 'white',
+    margin: '0.5em',
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+}
+
+const styleRefreshButton = {
+    background: 'linear-gradient(45deg, #2196f3 30%, #21cbf3 90%)',
+    margin: '0.5em',
+    color: 'white',
+    backgroundColor: '#2196F3',
+}
+
+const styleSelect = {
+    width: 300,
+    margin: '0.5em',
+    textAlign: 'left',
+}
 
 const typeOfCounter = [
     {
@@ -72,9 +92,8 @@ const TotalCountBar: React.FC = () => {
 
 
     return (
-        <div>
-
-            <Typography variant="h2" color="inherit">
+        <Box>
+            <Typography variant="h3" color="inherit" sx={{margin: '0.2em'}}>
                 {(() => {
                     switch (countMode) {
                         case modeValue.WORDS:
@@ -88,52 +107,56 @@ const TotalCountBar: React.FC = () => {
                     }
                 })()}
             </Typography>
-            <TextField
-                id="select-type"
-                select
+            <Box sx={{ display: 'flex', margin: '2em' }}>
+                <TextField
+                    id="select-type"
+                    select
+                    variant="standard"
 
-                // className={classes.selectField}
-                value={countMode}
-                onChange={handleSelect}
-                // SelectProps={{
-                //     MenuProps: {
-                //         className: classes.menu,
-                //     },
-                // }}
-                sx={{ margin: '0.5em' }}
-            >
-                {typeOfCounter.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </TextField>
-            <Button
-                variant="contained"
-                color="secondary"
-                // className={classes.addButton}
-                onClick={addItem}
-            >
-                Add
-            </Button>
-            <FormControlLabel
-                control={
-                    <Checkbox
-                        checked={addBelow}
-                        onChange={handleCheckBox}
-                    />
-                }
-                label="Add below"
-            />
-            <Button
-                variant="contained"
-                color="primary"
-                // className={classes.refreshButton}
-                onClick={clearAll}
-            >
-                Refresh
-            </Button>
-        </div>
+                    // className={classes.selectField}
+                    value={countMode}
+                    onChange={handleSelect}
+                    // SelectProps={{
+                    //     MenuProps: {
+                    //         className: classes.menu,
+                    //     },
+                    // }}
+                    sx={styleSelect}
+                >
+                    {typeOfCounter.map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={addItem}
+                    sx={styleAddButton}
+                >
+                    Add
+                </Button>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={addBelow}
+                            onChange={handleCheckBox}
+                        />
+                    }
+                    label="Add below"
+                />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={clearAll}
+                    sx={styleRefreshButton}
+                >
+                    Refresh
+                </Button>
+            </Box>
+
+        </Box>
     );
 }
 
