@@ -9,11 +9,7 @@ import WordCounter from './WordCounter'
 import { wordCounterListState } from "../state/counterState";
 import { useWordCounterList } from "../state/counterState";
 
-type Props = {
-  // onActive: boolean;
-}
-
-const CountingZone: React.FC<Props> = () => {
+const CountingZone: React.FC = () => {
   const wordCounters = useRecoilValue(wordCounterListState);
   const { addCounterBelow, refreshCounters } = useWordCounterList();
 
