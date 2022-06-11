@@ -7,6 +7,18 @@ import TextInput from './TextInput'
 import { useWordCounterList, wordCounterListState } from "../state/counterState";
 import { WordCounterItemType } from '../state/counterState';
 
+const styleCounter = {
+  paddingTop: 2,
+  paddingBottom: 2,
+  paddingLeft: 2,
+  marginTop: '1em',
+  width: '80%',
+  marginLeft: '2em',
+  display: 'flex',
+  flexFlow: 'column',
+  flexWrap: 'wrap',
+  textAlign: 'left',
+} as const;
 
 type Props = {
   counter: WordCounterItemType;
@@ -33,7 +45,7 @@ const WordCounter: React.FC<Props> = ({ counter }) => {
 
 
   return (
-    <Paper elevation={4}>
+    <Paper elevation={4} sx={styleCounter}>
       <div>
         <WordCountHeader
           // textLength={counter.numCharacters}

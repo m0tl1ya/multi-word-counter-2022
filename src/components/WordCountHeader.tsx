@@ -5,6 +5,13 @@ import { Clear } from '@mui/icons-material';
 
 import { WordCounterItemType } from "../state/counterState";
 import { modeValue, useCountMode } from '../state/modeState';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme();
+const styleButton = () => ({
+    top: '0.0em',
+    marginLeft: theme.spacing(1),
+});
 
 type Props = {
     counter: WordCounterItemType;
@@ -36,6 +43,7 @@ const WordCountHeader: React.FC<Props> = (props) => {
             <IconButton
                 aria-label="Delete"
                 onClick={props.deleteItem}
+                sx={styleButton}
             >
                 <Clear />
             </IconButton>
