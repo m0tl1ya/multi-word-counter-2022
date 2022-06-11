@@ -9,18 +9,8 @@ type Props = {
 const MultiWordCounter: React.FC<Props> = () => {
     return (
         <div>
-            <TotalCountBar
-            //   counters={counters}
-            //   addCounterTop={actions.counterActions.addCounterTop}
-            //   addCounterBelow={actions.counterActions.addCounterBelow}
-            //   refresh={actions.counterActions.refresh}
-            //   switchMode={actions.modeActions}
-            />
-            <CountingZone
-            //   counters={counters}
-            //   actions={actions.counterActions}
-            //   mode={mode}
-            />
+            <TotalCountBar />
+            <CountingZone />
         </div>
     );
 }

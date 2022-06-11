@@ -112,15 +112,8 @@ const TotalCountBar: React.FC = () => {
                     id="select-type"
                     select
                     variant="standard"
-
-                    // className={classes.selectField}
                     value={countMode}
                     onChange={handleSelect}
-                    // SelectProps={{
-                    //     MenuProps: {
-                    //         className: classes.menu,
-                    //     },
-                    // }}
                     sx={styleSelect}
                 >
                     {typeOfCounter.map(option => (

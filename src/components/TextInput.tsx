@@ -26,7 +26,6 @@ const TextInput: React.FC<Props> = (props) => {
             placeholder="Paste your text"
             multiline
             value={props.text}
-            // className={classes.textField}
             margin="normal"
             onChange={props.onChange}
             autoFocus={true}
