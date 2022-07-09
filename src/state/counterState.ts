@@ -9,7 +9,9 @@ export type WordCounterItemType = {
     isCounted: boolean;
 }
 
-export const wordCounterListState = atom<WordCounterItemType[]>({
+export type WordCountersType = WordCounterItemType[];
+
+export const wordCounterListState = atom<WordCountersType>({
     key: "wordCounterListState",
     default: [{
         id: 0,
@@ -125,6 +127,7 @@ export const useWordCounterList = () => {
     };
 
     return {
+        wordCounters,
         editText,
         toggleCountTarget,
         addCounterBelow,
