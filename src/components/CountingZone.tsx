@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useRecoilValue } from "recoil";
 
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
@@ -7,7 +6,6 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import { createTheme } from '@mui/material';
 
 import WordCounter from './WordCounter'
-import { wordCounterListState } from "../state/counterState";
 import { useWordCounterList } from "../state/counterState";
 
 const theme = createTheme();
@@ -27,8 +25,7 @@ const styleRefreshButton = {
 }
 
 const CountingZone: React.FC = () => {
-  const wordCounters = useRecoilValue(wordCounterListState);
-  const { addCounterBelow, refreshCounters } = useWordCounterList();
+  const { wordCounters, addCounterBelow, refreshCounters } = useWordCounterList();
 
   const addItem = () => {
     addCounterBelow();

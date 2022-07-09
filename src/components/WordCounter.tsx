@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Paper } from '@mui/material';
-import { useRecoilValue } from "recoil";
 import WordCountHeader from './WordCountHeader';
 import TextInput from './TextInput'
-import { useWordCounterList, wordCounterListState } from "../state/counterState";
+import { useWordCounterList } from "../state/counterState";
 import { WordCounterItemType } from '../state/counterState';
 
 const styleCounter = {
@@ -24,8 +23,8 @@ type Props = {
 }
 
 const WordCounter: React.FC<Props> = ({ counter }) => {
-  const wordCounters = useRecoilValue(wordCounterListState);
-  const { editText, toggleCountTarget, deleteCounter } = useWordCounterList();
+  // const wordCounters = useRecoilValue(wordCounterListState);
+  const { wordCounters, editText, toggleCountTarget, deleteCounter } = useWordCounterList();
   const id = React.useMemo(
     () => wordCounters.findIndex((listItem) => listItem === counter),
     [counter, wordCounters]
