@@ -10,17 +10,17 @@ import CountingZone from "./CountingZone";
 import { wordCounterListState, useWordCounterList, WordCounterItemType } from "../state/counterState";
 
 
-const renderRecoilHooks = () =>
-    renderHook(() => useRecoilValue(wordCounterListState), {
-        wrapper: ({ children }: { children: React.ReactNode }) =>
-            RecoilRoot({
-                children,
-            }),
-    });
+// const renderRecoilHooks = () =>
+//     renderHook(() => useRecoilValue(wordCounterListState), {
+//         wrapper: ({ children }: { children: React.ReactNode }) =>
+//             RecoilRoot({
+//                 children,
+//             }),
+//     });
 
-describe('The form state should', () => {
-    test('change when the user enters a name.', () => {
-        renderRecoilHooks();
+describe('Test of CountingZone', () => {
+    test('rendering component.', () => {
+        // renderRecoilHooks();
         render(
             <RecoilRoot>
                 <CountingZone />
