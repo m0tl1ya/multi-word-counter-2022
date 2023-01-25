@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { act, cleanup, fireEvent, render } from '@testing-library/react';
+import { act, cleanup } from '@testing-library/react';
 import { RecoilRoot } from "recoil";
 
 import { useWordCounterList, WordCounterItemType } from "./counterState";

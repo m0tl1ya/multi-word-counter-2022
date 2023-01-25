@@ -1,13 +1,9 @@
 import React from "react";
-import { atom, RecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { renderHook } from '@testing-library/react-hooks';
-import { act, cleanup, fireEvent, render } from '@testing-library/react';
 import { RecoilRoot } from "recoil";
 
-import CountingZone from "./CountingZone";
-import WordCounter from "./WordCounter";
-import WordCountHeader from "./WordCountHeader";
-import { wordCounterListState, useWordCounterList, WordCounterItemType } from "../state/counterState";
+import { wordCounterListState } from "../state/counterState";
 
 
 const renderRecoilHooks = () =>

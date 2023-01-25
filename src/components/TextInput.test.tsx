@@ -1,6 +1,5 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { RecoilRoot } from "recoil";
-import MultiWordCounter from "./MultiWordCounter";
 import TextInput from "./TextInput"
 
 type Props = {

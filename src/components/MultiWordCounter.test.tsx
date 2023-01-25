@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { RecoilRoot } from "recoil";
 import MultiWordCounter from "./MultiWordCounter";
 

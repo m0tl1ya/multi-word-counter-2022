@@ -1,9 +1,7 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { useRecoilValue, snapshot_UNSTABLE } from 'recoil';
-import { act, cleanup, fireEvent, render } from '@testing-library/react';
-import { RecoilRoot } from "recoil";
+import { snapshot_UNSTABLE } from 'recoil';
+import { cleanup } from '@testing-library/react';
 
-import { wordCounterListState, useWordCounterList, WordCounterItemType } from "./counterState";
+import { wordCounterListState } from "./counterState";
 import { CounterStatsType, totalStatsState } from "./counterStatsState";
 
 afterEach(() => cleanup());
