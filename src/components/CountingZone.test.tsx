@@ -10,14 +10,6 @@ import CountingZone from "./CountingZone";
 import { wordCounterListState, useWordCounterList, WordCounterItemType } from "../state/counterState";
 
 
-// const renderRecoilHooks = () =>
-//     renderHook(() => useRecoilValue(wordCounterListState), {
-//         wrapper: ({ children }: { children: React.ReactNode }) =>
-//             RecoilRoot({
-//                 children,
-//             }),
-//     });
-
 describe('Test of CountingZone', () => {
     test('rendering component.', () => {
         // renderRecoilHooks();

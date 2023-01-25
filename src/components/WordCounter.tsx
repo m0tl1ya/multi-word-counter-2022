@@ -23,7 +23,6 @@ type Props = {
 }
 
 const WordCounter: React.FC<Props> = ({ counter }) => {
-  // const wordCounters = useRecoilValue(wordCounterListState);
   const { wordCounters, editText, toggleCountTarget, deleteCounter } = useWordCounterList();
   const id = React.useMemo(
     () => wordCounters.findIndex((listItem) => listItem === counter),

@@ -26,10 +26,5 @@ type Props = {
 describe('Test of WordCounter', () => {
     test('rendering test.', () => {
         renderRecoilHooks();
-        // render(
-        //     <RecoilRoot>
-        //         <WordCounter />
-        //     </RecoilRoot>,
-        // );
     });
 });
