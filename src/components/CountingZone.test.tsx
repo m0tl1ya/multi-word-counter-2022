@@ -12,7 +12,6 @@ import { wordCounterListState, useWordCounterList, WordCounterItemType } from ".
 
 describe('Test of CountingZone', () => {
     test('rendering component.', () => {
-        // renderRecoilHooks();
         render(
             <RecoilRoot>
                 <CountingZone />

@@ -41,8 +41,6 @@ const CountingZone: React.FC = () => {
         <WordCounter
           key={counter.id}
           counter={counter}
-        // actions={actions}
-        // mode={mode}
         />)}
       <Fab
         color="primary"
